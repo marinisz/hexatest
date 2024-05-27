@@ -3,7 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "3.3.0"
 	id("io.spring.dependency-management") version "1.1.5"
-	id("org.jetbrains.kotlin.kapt") version "1.9.22" apply false
+	kotlin("kapt") version "1.9.10"
 	kotlin("jvm") version "1.9.24"
 	kotlin("plugin.spring") version "1.9.24"
 }
@@ -35,7 +35,8 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.springframework.kafka:spring-kafka")
-	implementation("org.mapstruct:mapstruct:1.4.2.Final")
+	implementation("org.mapstruct:mapstruct:1.5.5.Final")
+	kapt("org.mapstruct:mapstruct-processor:1.5.5.Final")
 	compileOnly("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.kafka:spring-kafka-test")
@@ -45,6 +46,15 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+	}
+}
+
+kapt {
+	arguments {
+		// Set Mapstruct Configuration options here
+		// https://kotlinlang.org/docs/reference/kapt.html#annotation-processor-arguments
+		// https://mapstruct.org/documentation/stable/reference/html/#configuration-options
+		// arg("mapstruct.defaultComponentModel", "spring")
 	}
 }
 

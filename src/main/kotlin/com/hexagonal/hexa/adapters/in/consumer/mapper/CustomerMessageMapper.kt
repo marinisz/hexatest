@@ -7,8 +7,6 @@ import org.mapstruct.Mapping
 
 @Mapper(componentModel = "spring")
 interface CustomerMessageMapper {
-
     @Mapping(target = "address", ignore = true)
     fun toCustomer(customerMessage: CustomerMessage): Customer
-
 }
