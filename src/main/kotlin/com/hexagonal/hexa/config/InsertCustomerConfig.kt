@@ -4,6 +4,7 @@ import com.hexagonal.hexa.adapters.out.FindAddressByZipCodeAdapter
 import com.hexagonal.hexa.adapters.out.InsertCustomerAdapter
 import com.hexagonal.hexa.adapters.out.SendCpfValidationAdapter
 import com.hexagonal.hexa.application.core.usecase.InsertCustomerUseCase
+import com.hexagonal.hexa.application.ports.`in`.InsertCustomerInputPort
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 
