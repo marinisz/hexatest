@@ -5,4 +5,4 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
 @Document(collection = "customers")
-data class CustomerEntity(@Id val id: String, val customerId: String, val name: String, var addressEntity: Address?, val cpf: String, var isValidCpf: Boolean)
+data class CustomerEntity(@Id val id: String, val name: String, var addressEntity: Address?, val cpf: String, var isValidCpf: Boolean)

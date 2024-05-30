@@ -7,7 +7,7 @@ import com.hexagonal.hexa.application.ports.out.FindCustomerByIdOutputPort
 
 class FindCustomerByIdUseCase(private val findCustomerByIdOutputPort: FindCustomerByIdOutputPort) :
     FindCustomerByIdInputPort {
-    override fun find(id: String): Customer {
+    override fun find(id: String?): Customer {
         return findCustomerByIdOutputPort.find(id)
             .orElseThrow { RuntimeException("Customer not found") }
     }

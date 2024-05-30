@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository
 import java.util.*
 
 interface CustomerRepository : MongoRepository<CustomerEntity, String> {
-    fun findByCustomerId(customerId: String): Optional<CustomerEntity>
+    fun findById(id: String?): Optional<CustomerEntity>
 }

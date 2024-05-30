@@ -10,7 +10,8 @@ class InsertCustomerUseCase(
     private val findAddressByZipCodeOutputPort: FindAddressByZipCodeOutputPort,
     private val insertCustomerOutputPort: InsertCustomerOutputPort,
     private val sendCpfForValidationOutputPort: SendCpfForValidationOutputPort
-) : InsertCustomerInputPort {
+) : InsertCustomerInputPort
+{
 
     @Override
     override fun insert(customer: Customer, zipCode: String) {

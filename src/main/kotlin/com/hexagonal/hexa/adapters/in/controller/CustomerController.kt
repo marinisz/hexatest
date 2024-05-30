@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -32,6 +33,7 @@ class CustomerController {
     @Autowired
     private lateinit var customerMapper: CustomerMapper
 
+    @PostMapping
     fun insert(@Valid @RequestBody customerRequest: CustomerRequest) : ResponseEntity<Void>{
         var customer = customerMapper.toCustomer(customerRequest)
         insertCustomerInputPort.insert(customer, customerRequest.zipCode)
@@ -39,7 +41,7 @@ class CustomerController {
     }
 
     @GetMapping("/{id}")
-    fun findByCustomerId(@PathVariable id:String):ResponseEntity<CustomerResponse> {
+    fun findById(@PathVariable id:String):ResponseEntity<CustomerResponse> {
         var customer = findCustomerByIdInputPort.find(id)
         var customerResponse = customerMapper.toCustomerResponse(customer)
         return ResponseEntity.ok().body(customerResponse)

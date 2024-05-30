@@ -18,8 +18,8 @@ class FindCustomerByIdAdapter() : FindCustomerByIdOutputPort{
     @Autowired
     private lateinit var customerRepository: CustomerRepository
 
-    override fun find(uuid: String): Optional<Customer> {
-        val customerEntity = customerRepository.findByCustomerId(uuid)
+    override fun find(id: String?): Optional<Customer> {
+        val customerEntity = customerRepository.findById(id)
         return customerEntity.map { entity ->
             customerEntityMapper.toCustomer(entity)
         }

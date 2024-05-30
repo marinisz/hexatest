@@ -4,5 +4,5 @@ import com.hexagonal.hexa.application.core.domain.Customer
 import java.util.Optional
 
 interface FindCustomerByIdOutputPort {
-    fun find(uuid: String): Optional<Customer>
+    fun find(uuid: String?): Optional<Customer>
 }
